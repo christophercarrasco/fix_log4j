@@ -26,6 +26,12 @@ get_sap_version_apply(){
 			process_war "ServiceLayerController" "/usr/sap/SAPBusinessOne/ServiceLayer/ServiceLayerController/webapps" "2.7"
 			process_war "ExtensionManager" "/usr/sap/SAPBusinessOne/ServerTools/ExtensionManager/webapps" "2.7"
 			;;
+		PL04)
+			echo -e "Applying fix for FP2011..."
+			process_war "LicenseControlCenter" "/usr/sap/SAPBusinessOne/ServerTools/License/webapps" "2.7"
+			process_war "ServiceLayerController" "/usr/sap/SAPBusinessOne/ServiceLayer/ServiceLayerController/webapps" "2.7"
+			process_war "ExtensionManager" "/usr/sap/SAPBusinessOne/ServerTools/ExtensionManager/webapps" "2.7"
+			;;
 		PL05)
 			echo -e "Applying fix for FP2102..."
 			process_war "LicenseControlCenter" "/usr/sap/SAPBusinessOne/ServerTools/License/webapps" "2.7"
@@ -48,7 +54,7 @@ get_sap_version_apply(){
 			;;
 		*)
 			echo -e "This version is intended for SAP Business One Server Components version 10.0"
-			echo -e "FP2008, FP2102, FP2105, FP2108"
+			echo -e "FP2008, FP2011, FP2102, FP2105, FP2108"
 			exit 99
 			;;
 	esac
