@@ -64,11 +64,11 @@ process_war(){
 	echo -e "\n=> Processing ${1}\n"	
 	echo -e "Entering directory ${2}"
 	cd "${2}"
-	echo -e "Extracting file log4j-core-2.7.jar"
+	echo -e "Extracting file log4j-core-${3}.jar"
 	unzip "${1}.war" "WEB-INF/lib/log4j-core-${3}.jar" -d .
 	echo -e "Deleting class JndiLookup.class from jar file"
 	zip -q -d "WEB-INF/lib/log4j-core-${3}.jar org/apache/logging/log4j/core/lookup/JndiLookup.class"
-	echo -e "Adding new log4j-core-2.7.jar file to war component"
+	echo -e "Adding new log4j-core-${3}.jar file to war component"
 	zip "${1}.war" "WEB-INF/lib/log4j-core-${3}.jar"
 	echo -e "Deleting working directory"
 	rm -r WEB-INF
@@ -82,6 +82,7 @@ pre_check(){
 		get_sap_version_apply
 	else
 		echo -e "The SAP Business One Server Components directory does not exist. Please check the installation."
+		exit 98
 	fi
 }
 
