@@ -67,7 +67,6 @@ process_war(){
 	echo -e "Extracting file log4j-core-${3}.jar"
 	unzip "${1}".war WEB-INF/lib/log4j-core-"${3}".jar -d .
 	echo -e "Deleting class JndiLookup.class from jar file"
-	echo "zip -q -d WEB-INF/lib/log4j-core-${3}.jar org/apache/logging/log4j/core/lookup/JndiLookup.class"
 	zip -q -d WEB-INF/lib/log4j-core-"${3}".jar org/apache/logging/log4j/core/lookup/JndiLookup.class
 	echo -e "Adding new log4j-core-${3}.jar file to war component"
 	zip "${1}".war WEB-INF/lib/log4j-core-"${3}".jar
